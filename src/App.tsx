@@ -67,7 +67,7 @@ function Tags() {
 }
 
 function Money() {
-    return <h2>记账也</h2>;
+    return <h2>记账页</h2>;
 }
 function NoMatch() {
     return <h2>你丫404</h2>;
