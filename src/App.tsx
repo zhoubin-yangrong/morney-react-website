@@ -4,73 +4,36 @@ import {
     HashRouter as Router,
     Switch,
     Route,
-
     Redirect
 } from "react-router-dom";
-import styled from "styled-components";
-import Nav from "./components/Nav";
-
-
-
-
-const Wrapper =styled.div`
-    border:1px solid red;
-  height:100vh;
-  display: flex;
-  flex-direction: column;
-`
-const Main = styled.div`
-  //border: 1px solid greenyellow;
-  flex-grow: 1;
-  overflow: auto;
-`
-
+import Tags from "./views/Tags";
+import Money from "./views/Money";
+import Statistics from "./views/Statistics";
+import NoMatch from "./views/NoMatch";
 export default function App() {
     return (
         <Router>
             <div>
-                <Wrapper>
-                    <Main>
                         <Switch>
                             <Route exact path="/">
                                 <Redirect to="/money" />
                             </Route>
                             <Route path="/tags">
-                                <Tags />
-
+                                <Tags></Tags>
                             </Route>
                             <Route path="/money">
-                                <Money />
+                                <Money></Money>
                             </Route>
                             <Route path="/statistics">
-                                <Statistics />
+                                <Statistics></Statistics>
                             </Route>
                             <Route path="*">
-                                <NoMatch />
+                                <NoMatch></NoMatch>
                             </Route>
                         </Switch>
-                    </Main>
-                    <Nav/>
-                </Wrapper>
-
             </div>
         </Router>
     );
-}
-
-function Statistics() {
-    return <h2>统计页</h2>;
-}
-
-function Tags() {
-    return <h2>标签页</h2>;
-}
-
-function Money() {
-    return <h2>记账页</h2>;
-}
-function NoMatch() {
-    return <h2>你丫404</h2>;
 }
 
 
