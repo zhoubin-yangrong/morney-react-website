@@ -35,3 +35,8 @@ body{
 :focus{
   outline: none;
 }
+.clearfix::after{
+  clear: both;
+  content: "";
+  display: block;
+}
