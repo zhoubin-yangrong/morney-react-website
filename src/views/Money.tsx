@@ -15,6 +15,23 @@ const TagsSection = styled.section`
   }
 `
 const NoteSection = styled.section`
+  background: #f5f5f5;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  >label{
+    white-space: nowrap;
+    margin-right:8px ;
+
+  }
+  > input{
+    display: block;
+    height: 72px;
+    width: 100%;
+    border: none;
+    background: none;
+    
+  }
   
 `
 const CategorySection = styled.section`
@@ -36,8 +53,8 @@ function Money() {
                 <button>新增标签</button>
             </TagsSection>
             <NoteSection>
-                <label>备注:</label>
-                <input type="text"/>
+                <label>备注</label>
+                <input type="text" placeholder="在这里添加备注信息"/>
             </NoteSection>
             <CategorySection>
                 <ul>

@@ -11,6 +11,7 @@
 *::before{
   box-sizing: border-box;
 }
+
 *::after{
   box-sizing: border-box;
 }
@@ -30,4 +31,7 @@ body{
 .icon{
   width: 1em;
   height: 1em;
+}
+:focus{
+  outline: none;
 }
