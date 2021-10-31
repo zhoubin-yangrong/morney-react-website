@@ -10,29 +10,36 @@ import Tags from "./views/Tags";
 import Money from "./views/Money";
 import Statistics from "./views/Statistics";
 import NoMatch from "./views/NoMatch";
+import styled from "styled-components";
+// 防止挂载全局样式混乱
+const AppWrapper=styled.div`
+color: #333;
+`
 export default function App() {
     return (
-        <Router>
-            <div>
-                        <Switch>
-                            <Route exact path="/">
-                                <Redirect to="/money" />
-                            </Route>
-                            <Route path="/tags">
-                                <Tags></Tags>
-                            </Route>
-                            <Route path="/money">
-                                <Money></Money>
-                            </Route>
-                            <Route path="/statistics">
-                                <Statistics></Statistics>
-                            </Route>
-                            <Route path="*">
-                                <NoMatch></NoMatch>
-                            </Route>
-                        </Switch>
-            </div>
-        </Router>
+        <AppWrapper>
+            <Router>
+                <div>
+                    <Switch>
+                        <Route exact path="/">
+                            <Redirect to="/money" />
+                        </Route>
+                        <Route path="/tags">
+                            <Tags/>
+                        </Route>
+                        <Route path="/money">
+                            <Money/>
+                        </Route>
+                        <Route path="/statistics">
+                            <Statistics/>
+                        </Route>
+                        <Route path="*">
+                            <NoMatch/>
+                        </Route>
+                    </Switch>
+                </div>
+            </Router>
+        </AppWrapper>
     );
 }
 
