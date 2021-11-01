@@ -28,25 +28,34 @@ const Wrapper = styled.section`
   }
 `
 
+type Props={
+    value:"-" | "+",
+    onChange:(value:"-" | "+") => void
+}
 
-
-const CategorySection:React.FC= ()=>{
-    const [category,setCategory]=useState("-")
-    const x =(type:string)=>{
-        setCategory(type)
-    }
+const CategorySection:React.FC<Props> = (props)=>{
+    // const [category,setCategory]=useState("-")
+    const category =props.value
+    // const x =(type:string)=>{
+    //     console.log(type)
+    //     // setCategory(type)
+    //     props.onChange(type)
+    // }
     const categoryMap ={"-":"支出","+":"收入"}
     // ts的检测写法
-    type keys = keyof typeof categoryMap
-    const [categoryList]=useState<keys[]>(["-","+"])
+    // type keys = keyof typeof categoryMap
+    const [categoryList]=useState<("+" | "-")[]>(["-","+"])
     return(
         <Wrapper>
             <ul>
-                {categoryList.map(l=>{
-                    return  <li key={l} className={category===l?"select":""} onClick={()=>x(l)}>{categoryMap[l]}</li>
+                {categoryList.map((l)=>{
+                    return  <li key={l}
+                                className={category===l?"select":""}
+                                onClick={()=>props.onChange(l)}>
+                             {categoryMap[l]}
+                    </li>
                 })}
-                {/*<li className={category==="-"?"select":""} onClick={()=>x('-')}>支出</li>*/}
-                {/*<li className={category==="+"?"select":""} onClick={()=>x("+")}>收入</li>*/}
+
             </ul>
         </Wrapper>
     )

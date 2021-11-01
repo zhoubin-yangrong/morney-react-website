@@ -1,22 +1,35 @@
 
-import React, {useState} from "react";
+import React from "react";
 import {Wrapper} from "./NumberPad/Wrapper";
 import generateOutNumber from "./NumberPad/generateOutNumber";
 
-
-const NumberPadSection:React.FC = ()=>{
-    const [outNumber,_setOutNumber] = useState("0")
+type Props = {
+    value:number,
+    onChange:(num:number)=>void
+    onOk?:()=>void
+}
+const NumberPadSection:React.FC<Props> = (props)=>{
+    // const [outNumber,_setOutNumber] = useState("0")
+    const outNumber = props.value.toString()
     const setOutNumber=(num:string)=>{
+        let newValue
         if (outNumber.length>=16){
-            num= num.slice(0,16)
+            newValue= num.slice(0,16)
+        }else if (outNumber.length===0){
+            newValue=0
+        }else {
+            newValue=num
         }
-        _setOutNumber(num)
+        props.onChange(newValue as number)
     }
     const onButtonWrapper = (e:React.MouseEvent)=>{
         const text = (e.target as HTMLButtonElement).textContent
         if (text===null)return
         if (text==="ok"){
             // TODO
+            if (props.onOk){
+                props.onOk()
+            }
             return
         }
         if ("0123456789.".split("").concat(['删除',"清空"]).indexOf(text)>=0){

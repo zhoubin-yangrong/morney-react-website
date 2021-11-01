@@ -17,9 +17,11 @@ const generateOutNumber=(text:string,outNumber="0")=>{
             }
 
         case ".":
+
             if (outNumber.indexOf(".")>=0){
                 return outNumber
             }else {
+
                 return (`${outNumber}${text}`)
             }
 
@@ -36,7 +38,7 @@ const generateOutNumber=(text:string,outNumber="0")=>{
 
         default:
             return ("0")
-       
+
     }
 }
 export default generateOutNumber
