@@ -27,13 +27,18 @@ const Wrapper = styled.section`
     }
   }
 `
+
+
+
 const CategorySection:React.FC= ()=>{
     const [category,setCategory]=useState("-")
     const x =(type:string)=>{
         setCategory(type)
     }
     const categoryMap ={"-":"支出","+":"收入"}
-    const [categoryList]=useState<("-"|"+")[]>(["-","+"])
+    // ts的检测写法
+    type keys = keyof typeof categoryMap
+    const [categoryList]=useState<keys[]>(["-","+"])
     return(
         <Wrapper>
             <ul>
