@@ -57,7 +57,13 @@ const Wrapper = styled.section`
   }
 `
 const NumberPadSection:React.FC = ()=>{
-    const [outNumber,setOutNumber] = useState("0")
+    const [outNumber,_setOutNumber] = useState("0")
+    const setOutNumber=(num:string)=>{
+        if (outNumber.length>=16){
+            num= num.slice(0,16)
+        }
+        _setOutNumber(num)
+    }
     const onButtonWrapper = (e:React.MouseEvent)=>{
         const text = (e.target as HTMLButtonElement).textContent
         if (text===null)return
@@ -70,20 +76,29 @@ const NumberPadSection:React.FC = ()=>{
             case "5":
             case "6":
             case "7":
-            case "8":
-                 case "9":
+            case "8":case "9":
+                     if (outNumber==="0"){
+                         setOutNumber(text)
+                     }else {
+                         setOutNumber(`${outNumber}${text}`)
+                     }
+                     break
             case ".":
-                if (outNumber==="0"){
-                    setOutNumber(text)
-                    }else {
+                if (outNumber.indexOf(".")>=0){
+                 return
+                }else {
                     setOutNumber(`${outNumber}${text}`)
                 }
                 break
             case "删除":
                 console.log("删除")
+                if (outNumber.length===1){
+                    setOutNumber("0")
+                }else {setOutNumber(outNumber.slice(0,-1))}
                 break
             case "清空":
                 console.log("清空")
+                setOutNumber("0")
                 break
             case "ok":
                 console.log("确认")
