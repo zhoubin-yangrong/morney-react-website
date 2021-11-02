@@ -8,6 +8,7 @@ const defaultTags=[
 ]//为了去除路由跳转回来id变换的bug   抽离出来
 const useTags = ()=>{   //自定义hooks函数(函数体包含react的内置接口--比如说useState)
     const [tag,setTag] = useState<{id:number,name:string}[]>(defaultTags)
-    return {tag,setTag}
+    const findTag = (id:number)=> tag.filter(t=>t.id===id)[0]
+    return {tag,setTag,findTag}
 }
 export {useTags}
