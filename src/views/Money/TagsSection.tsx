@@ -22,37 +22,37 @@ const Wrapper = styled.section`
   }
 `
 type Props ={
-    value:string[],
-    onChange:(selected:string[])=> void
+    value:number[],
+    onChange:(selected:number[])=> void
 }
 const TagsSection: React.FC<Props> = (props)=>{
     const{tag,setTag}=useTags()
-    // const [selected,setSelected] = useState<string[]>([])
-    const selected = props.value
+    // const [selectedTagIds,setSelected] = useState<string[]>([])
+    const selectedTagIds = props.value
     const onAddTag =()=>{
         const tagName =window.prompt("新增标签")
         if (tagName!==null){
-            setTag([...tag,tagName])
+            setTag([...tag, {id:Math.random(),name:tagName}])
         }else {
             alert("玩呢?")
         }
     }
-    const onToggleTags=(tag:string)=>{
-        const index:number = selected.indexOf(tag)
+    const onToggleTags=(tagId:number)=>{
+        const index:number = selectedTagIds.indexOf(tagId)
         if (index>=0){
-            props.onChange(selected.filter(t=>t!==tag))
+            props.onChange(selectedTagIds.filter(t=>t!==tagId))
         }else {
-            props.onChange([...selected,tag])
+            props.onChange([...selectedTagIds,tagId])
         }
     }
-    const getClass=(tag:string)=>{
-        return selected.indexOf(tag)>=0?"selected":""
+    const getClass=(tagId:number)=>{
+        return selectedTagIds.indexOf(tagId)>=0?"selected":""
     }
     return(
         <Wrapper>
             <ol>
                 {tag.map(tag=>{
-                    return <li key={tag} onClick={()=>{onToggleTags(tag)}} className={getClass(tag)} >{tag}</li>
+                    return <li key={tag.id} onClick={()=>{onToggleTags(tag.id)}} className={getClass(tag.id)} >{tag.name}</li>
                 })}
             </ol>
             <button onClick={()=>{onAddTag()}}>新增标签</button>
