@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React  from "react";
 import {useTags} from "../../useTags";
+import {createId} from "../../lib/createId";
 const Wrapper = styled.section`
   background: #FFFFFF;padding: 0 16px;
   flex-grow: 1;
@@ -32,7 +33,7 @@ const TagsSection: React.FC<Props> = (props)=>{
     const onAddTag =()=>{
         const tagName =window.prompt("新增标签")
         if (tagName!==null){
-            setTag([...tag, {id:Math.random(),name:tagName}])
+            setTag([...tag, {id:createId(),name:tagName}])
         }else {
             alert("玩呢?")
         }
