@@ -40,3 +40,8 @@ body{
   content: "";
   display: block;
 }
+.oneLine{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
