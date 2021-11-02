@@ -25,7 +25,7 @@ function Money() {
     }
     return(
         <MyLayout className="xxx">
-            {selected.tags.join("")}
+     {/*       {selected.tags.join("")}
             <hr/>
             {selected.note}
             <hr/>
@@ -33,7 +33,7 @@ function Money() {
             <hr/>
             {selected.amount}
             <hr/>
-
+*/}
             <TagsSection value={selected.tags}
                          onChange={(tags)=>{onChange({tags})}}/>
             <NoteSection value={selected.note}

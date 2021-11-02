@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import React, {useState} from "react";
+import React from "react";
+import {useTags} from "../../useTags";
 const Wrapper = styled.section`
   background: #FFFFFF;padding: 0 16px;
   flex-grow: 1;
@@ -25,7 +26,7 @@ type Props ={
     onChange:(selected:string[])=> void
 }
 const TagsSection: React.FC<Props> = (props)=>{
-    const [tag,setTag] = useState<string[]>(["衣","食","住","行","花","羊绒吃屎"])
+    const{tag,setTag}=useTags()
     // const [selected,setSelected] = useState<string[]>([])
     const selected = props.value
     const onAddTag =()=>{
