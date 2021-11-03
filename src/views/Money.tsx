@@ -25,6 +25,7 @@ function Money() {
     }
     return(
         <MyLayout className="xxx">
+            <div>{selected.note}</div>收到是
             <TagsSection value={selected.tagIds}
                          onChange={(tagIds)=>{onChange({tagIds})}}/>
             <NoteSection value={selected.note}

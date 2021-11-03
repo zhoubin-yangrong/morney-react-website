@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import React, {useRef} from "react";
+import React, {ChangeEventHandler} from "react";
+import {Input} from "../../components/Input";
 
 const Wrapper = styled.section`
   background: #f5f5f5;
   padding: 0 16px;
   display: flex;
   align-items: center;
-  >label{
+ /* >label{
     display: flex;
     align-items: center;
     width: 100%;
@@ -21,7 +22,7 @@ const Wrapper = styled.section`
       border: none;
       background: none;
     }
-  }
+  }*/
  
 `
 type Props = {
@@ -31,23 +32,20 @@ type Props = {
 const NoteSection:React.FC<Props> =(props)=>{
     // const [note,setNote]=useState("")
     const note = props.value
-    const refInput = useRef<HTMLInputElement>(null)
-    const x = ()=>{
-        if (refInput.current!==null){
+    // const refInput = useRef<HTMLInputElement>(null)
+    const onChange:ChangeEventHandler<HTMLInputElement> = (e)=>{
+        props.onChange(e.target.value)
+       /* if (refInput.current!==null){
             console.log(refInput.current.value)
             props.onChange(refInput.current.value)
-        }
+        }*/
     }
     return(
         <Wrapper>
-            <label>
-                <span>备注</span>
-                <input type="text" placeholder="在这里添加备注信息"
-                       defaultValue={note}
-                       ref={refInput}
-                        onBlur={x}
-                />
-            </label>
+            <Input label="备注" type="text" placeholder="在这里添加备注信息"
+                   value={note}
+                   onChange={onChange}/>
+            {/*函数组件不支持ref={refInput}写法*/}
         </Wrapper>
     )
 }

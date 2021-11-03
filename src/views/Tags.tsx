@@ -6,6 +6,7 @@ import Icon from "../components/Icon";
 import {
     Link
 } from "react-router-dom";
+import {Button} from "../components/Button";
 const TagList = styled.ol`
   font-size: 16px;
   background: white;
@@ -53,7 +54,7 @@ function Tags() {
                 )}
             </TagList>
             <Center>
-                <button>新建标签</button>
+               <Button>新建标签</Button>
             </Center>
             {/*<h2>标签页</h2>*/}
         </Layout>

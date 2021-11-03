@@ -11,7 +11,7 @@ import Money from "./views/Money";
 import Statistics from "./views/Statistics";
 import NoMatch from "./views/NoMatch";
 import styled from "styled-components";
-import {Tag} from "./views/tag";
+import {Tag} from "./views/Tag";
 // 防止挂载全局样式混乱
 const AppWrapper=styled.div`
 color: #333;
