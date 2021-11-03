@@ -23,9 +23,23 @@ const useTags = ()=>{   //自定义hooks函数(函数体包含react的内置接�
         // setTag({})
         const index = findTagIndex(id)
         const cloneTag =JSON.parse(JSON.stringify(tag)  )
-        cloneTag.slice(index,1,{id,obj})//!修改的拷贝后的自身参数
+        cloneTag.splice(index,1,{id,obj})//!修改的拷贝后的自身参数
         setTag(cloneTag)
     }
-    return {tag,setTag,findTag,updateTag,findTagIndex}
+    const deleteTag = (id:number)=>{
+        const index = findTagIndex(id)
+        console.log("index",index)
+
+        const cloneTag =JSON.parse(JSON.stringify(tag)  )
+        console.log(
+            "cloneTag1",cloneTag
+        )
+        cloneTag.splice(index,1)//!修改的拷贝后的自身参数
+        console.log(
+            "cloneTag2",cloneTag
+        )
+        setTag(cloneTag)
+    }
+    return {tag,setTag,findTag,updateTag,findTagIndex,deleteTag}
 }
 export {useTags}

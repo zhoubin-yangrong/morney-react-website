@@ -22,10 +22,26 @@ const InputWrapper=styled.div`
   background-color: white;
   margin-top: 8px;
 `
+
 const Tag:React.FC = ()=>{
-    const {findTag,updateTag}  =  useTags()
+    const {findTag,updateTag,deleteTag}  =  useTags()
     let {id}=useParams<Params>()
     const tag = findTag(parseInt(id))
+    const content = (tag:{id:number,name:string})=>{
+        return(
+            <>
+                <InputWrapper>
+                    <Input  label="标签名" value={tag.name} type="text" onChange={(e)=>{
+                        console.log(e.target.value);
+                        updateTag(tag.id,{name:e.target.value})
+                    }}/>
+                </InputWrapper>
+                <Center>
+                    <Button onClick={()=> deleteTag(tag.id)}>删除标签</Button>
+                </Center>
+            </>
+        )
+    }
     return(
         <Layout>
            <Topbar>
@@ -33,15 +49,16 @@ const Tag:React.FC = ()=>{
                <span>编辑标签</span>
                <Icon name="#undefiend"/>
            </Topbar>
-            <InputWrapper>
-                <Input  label="标签名" placeholder={tag.name} type="text" onChange={(e)=>{
+            {tag?content(tag): <Center><Button >返回上级页面</Button></Center>}
+            {/*<InputWrapper>
+                <Input  label="标签名" value={tag.name} type="text" onChange={(e)=>{
                     console.log(e.target.value);
                     updateTag(tag.id,{name:e.target.value})
                 }}/>
             </InputWrapper>
             <Center>
-                <Button>删除标签</Button>
-            </Center>
+                <Button onClick={()=> deleteTag(tag.id)}>删除标签</Button>
+            </Center>*/}
         </Layout>
     )
 }
