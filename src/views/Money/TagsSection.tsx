@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React  from "react";
 import {useTags} from "../../useTags";
-import {createId} from "../../lib/createId";
+
 import {Button} from "../../components/Button";
 const Wrapper = styled.section`
   background: #FFFFFF;padding: 0 16px;
@@ -28,18 +28,10 @@ type Props ={
     onChange:(selected:number[])=> void
 }
 const TagsSection: React.FC<Props> = (props)=>{
-    const{tag,setTag}=useTags()
+    const{tag,AddTag}=useTags()
     // const [selectedTagIds,setSelected] = useState<string[]>([])
     const selectedTagIds = props.value
-    const onAddTag =()=>{
 
-        const tagName =window.prompt("新增标签")
-        if (tagName!==null){
-            setTag([...tag, {id:createId(),name:tagName}])
-        }else {
-            alert("玩呢?")
-        }
-    }
     const onToggleTags=(tagId:number)=>{
         const index:number = selectedTagIds.indexOf(tagId)
         if (index>=0){
@@ -58,9 +50,12 @@ const TagsSection: React.FC<Props> = (props)=>{
                     return <li key={tag.id} onClick={()=>{onToggleTags(tag.id)}} className={getClass(tag.id)} >{tag.name}</li>
                 })}
             </ol>
-            <Button onClick={()=>{onAddTag()}}>新建标签</Button>
+            <Button onClick={()=>{AddTag()}}>新建标签</Button>
         </Wrapper>
     )
 }
 
 export {TagsSection}
+
+
+

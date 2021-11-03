@@ -55,7 +55,7 @@ const Tag:React.FC = ()=>{
                <span>编辑标签</span>
                <Icon name="#undefiend"/>
            </Topbar>
-            {tag?content(tag): <Center><Button >返回上级页面</Button></Center>}
+            {tag?content(tag): <Center><Button onClick={onBack} >返回上级页面</Button></Center>}
             {/*<InputWrapper>
                 <Input  label="标签名" value={tag.name} type="text" onChange={(e)=>{
                     console.log(e.target.value);
