@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {createId} from "./lib/createId";
-import {useUpdate} from "./hooks/useUpdate";
+import {useUpdate} from "hooks/useUpdate";
 
 const useTags = ()=>{   //自定义hooks函数(函数体包含react的内置接口--比如说useState)
     const [tag,setTag] = useState<{id:number,name:string}[]>([])
@@ -18,8 +18,9 @@ const useTags = ()=>{   //自定义hooks函数(函数体包含react的内置接�
         setTag(localTags)
     },[])
     useUpdate(()=>{
-        window.localStorage.setItem("tags",JSON.stringify(tag))
-    },[tag])
+        console.log("xxx")
+        // window.localStorage.setItem("tags",JSON.stringify(tag))
+    },tag)
     // useEffect(()=>{
     //     // 重复两遍的操作   解决这个问题用自封装执行函数
     //     console.log("tag changed");

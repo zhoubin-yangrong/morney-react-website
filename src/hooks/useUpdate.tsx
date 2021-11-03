@@ -1,10 +1,16 @@
 import {useEffect, useRef} from "react";
-export const useUpdate=(fn:()=>void,deps:any[])=>{
-    const count=useRef(0)
+
+
+ const useUpdate=(fn:()=>void,deps:any)=>{
+    let count=useRef(0)
     useEffect(()=>{
-        const start = count.current+=1
-        if (start>0){
-            fn()
+        count.current+=1
+    })
+    useEffect(()=>{
+        if (count.current>1){
+            console.log("更新吧")
+            // fn()
         }
-    },deps) //每次渲染执行的函数
+    },[deps]) //每次渲染执行的函数 不可变数据
 }
+export {useUpdate}
