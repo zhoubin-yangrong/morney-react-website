@@ -4,7 +4,7 @@ import {Input} from "../../components/Input";
 
 const Wrapper = styled.section`
   background: #f5f5f5;
-  padding: 0 16px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
  /* >label{

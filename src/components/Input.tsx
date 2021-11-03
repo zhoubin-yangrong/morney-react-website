@@ -10,7 +10,7 @@ const Label = styled.label`
     > input{
       margin-left:16px ;
       display: block;
-      height: 72px;
+      height: 44px;
       width: 100%;
       border: none;
       background: none;

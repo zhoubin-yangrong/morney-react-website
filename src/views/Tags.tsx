@@ -7,6 +7,7 @@ import {
     Link
 } from "react-router-dom";
 import {Button} from "../components/Button";
+import { Center } from "components/Center";
 const TagList = styled.ol`
   font-size: 16px;
   background: white;
@@ -21,22 +22,7 @@ const TagList = styled.ol`
     }
   }
 `
-const Center=styled.div`
-  padding-top: 44px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  >button{
-    font-size: 17px;
-    line-height: 22px;
-    border: none;
-    background: skyblue;
-    border-radius: 4px;
-    padding: 9px 15px;
-    color: #FFFFFF;
-  }
-`
+
 function Tags() {
     const{tag,setTag}=useTags()
     console.log(tag,setTag)
