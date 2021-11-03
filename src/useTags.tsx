@@ -20,25 +20,20 @@ const useTags = ()=>{   //自定义hooks函数(函数体包含react的内置接�
         return result
     }
     const updateTag = (id:number,obj:{name:string})=>{
-        // setTag({})
-        const index = findTagIndex(id)
+        // 简写 map特性
+        setTag(tag.map(t=>t.id === id ? {id: id, name: obj.name} : t))
+       /* const index = findTagIndex(id)
         const cloneTag =JSON.parse(JSON.stringify(tag)  )
         cloneTag.splice(index,1,{id,obj})//!修改的拷贝后的自身参数
-        setTag(cloneTag)
+        setTag(cloneTag)*/
     }
     const deleteTag = (id:number)=>{
-        const index = findTagIndex(id)
-        console.log("index",index)
-
+        // 简写 筛选器特性
+        setTag(tag.filter(t=>t.id!==id))
+        /*const index = findTagIndex(id)
         const cloneTag =JSON.parse(JSON.stringify(tag)  )
-        console.log(
-            "cloneTag1",cloneTag
-        )
         cloneTag.splice(index,1)//!修改的拷贝后的自身参数
-        console.log(
-            "cloneTag2",cloneTag
-        )
-        setTag(cloneTag)
+        setTag(cloneTag)*/
     }
     return {tag,setTag,findTag,updateTag,findTagIndex,deleteTag}
 }
