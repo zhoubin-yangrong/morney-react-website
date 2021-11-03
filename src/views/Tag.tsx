@@ -23,7 +23,7 @@ const InputWrapper=styled.div`
   margin-top: 8px;
 `
 const Tag:React.FC = ()=>{
-    const {findTag}  =  useTags()
+    const {findTag,updateTag}  =  useTags()
     let {id}=useParams<Params>()
     const tag = findTag(parseInt(id))
     return(
@@ -34,7 +34,10 @@ const Tag:React.FC = ()=>{
                <Icon name="#undefiend"/>
            </Topbar>
             <InputWrapper>
-                <Input  label="标签名" placeholder={tag.name} type="text"/>
+                <Input  label="标签名" placeholder={tag.name} type="text" onChange={(e)=>{
+                    console.log(e.target.value);
+                    updateTag(tag.id,{name:e.target.value})
+                }}/>
             </InputWrapper>
             <Center>
                 <Button>删除标签</Button>
