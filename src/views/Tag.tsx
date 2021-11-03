@@ -1,5 +1,5 @@
 import React from "react";
-import {useParams} from "react-router-dom";
+import {useParams,useHistory} from "react-router-dom";
 import {useTags} from "useTags";
 import Layout from "components/layout";
 import Icon from "components/Icon"
@@ -42,10 +42,16 @@ const Tag:React.FC = ()=>{
             </>
         )
     }
+    const history = useHistory()
+    const onBack=()=>{
+        // window.history.back()
+        history.go(-1)
+        // history.push("/tags");
+    }
     return(
         <Layout>
            <Topbar>
-               <Icon name="#left"/>
+               <Icon className="zhou" onClick={onBack} name="#left"/>
                <span>编辑标签</span>
                <Icon name="#undefiend"/>
            </Topbar>
