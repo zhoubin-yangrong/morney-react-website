@@ -89,7 +89,7 @@ function Money() {
     }
     //提交end
     return(
-        <MyLayout className="xxx">
+        <MyLayout className="xxx" scrollTop={999999}>
             <TagsSection value={selected.tagIds}
                          onChange={(tagIds)=>{onChange({tagIds})}}/>
             <NoteSection value={selected.note}
