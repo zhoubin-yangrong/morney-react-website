@@ -55,25 +55,38 @@ function Money() {
         }
     },[records])
     const addRecord = (newRecord:newRecordItem)=>{
+        if (newRecord.amount<=0){
+            alert("请输入金额")
+            return false
+        }
+        if (newRecord.tagIds.length<=0){
+          alert("选择记账标签")
+            return false
+        }
+
         const record = {...newRecord,createdAt:new Date().toISOString()}
         setRecords([...records,record])
+        return true
     }
     const submit=()=>{
-        console.log(records,selected)
+        // console.log(records,selected)
         addRecord(selected)
-        alert("保存")
-        //重置
-        setSelected({
-            tagIds:[] as number[],
-            note:"",
-            category:"-" as (Category),
-            amount:0
-        })
+        if ( addRecord(selected)){
+            alert("保存")
+            //重置
+            setSelected({
+                tagIds:[] as number[],
+                note:"",
+                category:"-" as (Category),
+                amount:0
+            })
+        }else{
+            alert("保存失败")
+        }
     }
     //提交end
     return(
         <MyLayout className="xxx">
-            <div>{JSON.stringify(selected)}</div>收到是
             <TagsSection value={selected.tagIds}
                          onChange={(tagIds)=>{onChange({tagIds})}}/>
             <NoteSection value={selected.note}
