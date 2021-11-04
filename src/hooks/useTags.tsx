@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from "react";
-import {createId} from "./lib/createId";
+import {createId} from "../lib/createId";
 
 const useTags = ()=>{   //自定义hooks函数(函数体包含react的内置接口--比如说useState)
     const [tag,setTag] = useState<{id:number,name:string}[]>([])
