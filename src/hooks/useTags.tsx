@@ -65,6 +65,10 @@ const useTags = ()=>{   //自定义hooks函数(函数体包含react的内置接�
             alert("玩呢?")
         }
     }
-    return {tag,setTag,findTag,updateTag,findTagIndex,deleteTag,AddTag: addTag}
+    const getName = (id:number)=>{
+            const findTag=tag.filter(t=>t.id===id)
+            return findTag ? findTag[0].name : "";
+    }
+    return {tag,setTag,findTag,updateTag,findTagIndex,deleteTag,AddTag: addTag,getName}
 }
 export {useTags}

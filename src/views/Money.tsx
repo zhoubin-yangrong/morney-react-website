@@ -9,6 +9,9 @@ const MyLayout = styled(Layout)`
   //border: 1px solid red;
 `
 type Category ="-" | "+"
+const CategoryWrapper = styled.div`
+  background-color: #c4c4c4;
+`
 function Money() {
     const [selected,setSelected] = useState({
         tagIds:[] as number[],
@@ -91,8 +94,11 @@ function Money() {
                          onChange={(tagIds)=>{onChange({tagIds})}}/>
             <NoteSection value={selected.note}
                          onChange={(note)=>{onChange({note})}}/>
-            <CategorySection  value={selected.category}
-                              onChange={(category)=>{onChange({category})}}/>
+            <CategoryWrapper>
+                <CategorySection  value={selected.category}
+                                  onChange={(category)=>{onChange({category})}}/>
+            </CategoryWrapper>
+
             <NumberPadSection value={selected.amount}
                               onOk={()=>submit()}
                               onChange={(amount)=>{onChange({amount})}}/>
